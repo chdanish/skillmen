@@ -1,0 +1,16 @@
+/Users/danish/Project/java/skillmen/src/main/java/com/esc/basic/service/Impl/UserService.java
+/Users/danish/Project/java/skillmen/src/main/java/com/esc/basic/config/SecurityConfig.java
+/Users/danish/Project/java/skillmen/src/main/java/com/esc/basic/Converter/CSVtoListConverter.java
+/Users/danish/Project/java/skillmen/src/main/java/com/esc/basic/domain/AuditModel.java
+/Users/danish/Project/java/skillmen/src/main/java/com/esc/basic/api/SkillController.java
+/Users/danish/Project/java/skillmen/src/main/java/com/esc/basic/repo/UserRepository.java
+/Users/danish/Project/java/skillmen/src/main/java/com/esc/basic/config/WebConfig.java
+/Users/danish/Project/java/skillmen/src/main/java/com/esc/basic/service/Impl/GenericCrudServiceImpl.java
+/Users/danish/Project/java/skillmen/src/main/java/com/esc/basic/SkillmenApplication.java
+/Users/danish/Project/java/skillmen/src/main/java/com/esc/basic/config/SwaggerConfig.java
+/Users/danish/Project/java/skillmen/src/main/java/com/esc/basic/model/UserModel.java
+/Users/danish/Project/java/skillmen/src/main/java/com/esc/basic/service/GenericCrudService.java
+/Users/danish/Project/java/skillmen/src/main/java/com/esc/basic/config/JpaConfig.java
+/Users/danish/Project/java/skillmen/src/main/java/com/esc/basic/domain/User.java
+/Users/danish/Project/java/skillmen/src/main/java/com/esc/basic/api/UserController.java
+/Users/danish/Project/java/skillmen/src/main/java/com/esc/basic/constant/Role.java

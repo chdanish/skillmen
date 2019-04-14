@@ -1,0 +1,26 @@
+spring:
+  profiles.active: local
+
+
+---
+
+spring:
+  profiles: local
+  #  freemarker.template-loader-path: /templates
+  #  freemarker.suffix: .ftl
+  datasource:
+    url: jdbc:mysql://localhost:3306/skilmen?useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+
+logging:
+  level:
+#    root: debug
+    com.esc.skillmen: debug
+    org.springframework.boot: debug
+    springfox: debug
