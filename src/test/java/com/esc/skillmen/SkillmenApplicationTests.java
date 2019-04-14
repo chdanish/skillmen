@@ -1,4 +1,4 @@
-package com.esc.basic;
+package com.esc.skillmen;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package com.esc.basic.domain;
+package com.esc.skillmen.domain;
 
 import java.io.Serializable;
 import java.util.Date;

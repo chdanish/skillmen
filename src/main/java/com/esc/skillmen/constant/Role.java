@@ -1,4 +1,4 @@
-package com.esc.basic.constant;
+package com.esc.skillmen.constant;
 
 public enum Role {
 

@@ -1,6 +1,6 @@
-package com.esc.basic.repo;
+package com.esc.skillmen.repo;
 
-import com.esc.basic.domain.User;
+import com.esc.skillmen.domain.User;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

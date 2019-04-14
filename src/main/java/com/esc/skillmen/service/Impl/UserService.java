@@ -1,7 +1,7 @@
-package com.esc.basic.service.Impl;
+package com.esc.skillmen.service.Impl;
 
-import com.esc.basic.domain.User;
-import com.esc.basic.repo.UserRepository;
+import com.esc.skillmen.domain.User;
+import com.esc.skillmen.repo.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

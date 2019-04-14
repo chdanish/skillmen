@@ -1,6 +1,6 @@
-package com.esc.basic.api;
+package com.esc.skillmen.api;
 
-import com.esc.basic.repo.UserRepository;
+import com.esc.skillmen.repo.UserRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;

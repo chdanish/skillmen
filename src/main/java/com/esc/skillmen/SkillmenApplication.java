@@ -1,9 +1,9 @@
-package com.esc.basic;
+package com.esc.skillmen;
 
-import com.esc.basic.config.WebConfig;
-import com.esc.basic.constant.Role;
-import com.esc.basic.domain.User;
-import com.esc.basic.service.Impl.UserService;
+import com.esc.skillmen.config.WebConfig;
+import com.esc.skillmen.constant.Role;
+import com.esc.skillmen.domain.User;
+import com.esc.skillmen.service.Impl.UserService;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;

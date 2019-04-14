@@ -1,4 +1,4 @@
-package com.esc.basic.config;
+package com.esc.skillmen.config;
 
 import com.google.common.collect.Lists;
 import org.springframework.context.annotation.Bean;
@@ -27,12 +27,12 @@ public class SwaggerConfig {
                 .consumes(Collections.singleton("application/json"))
 				.select()                                  
 				//.apis(RequestHandlerSelectors.any())              
-				.apis(RequestHandlerSelectors.basePackage("com.esc.basic.api"))
+				.apis(RequestHandlerSelectors.basePackage("com.esc.skillmen.api"))
 				.paths(PathSelectors.any())
 				.build()
 				.apiInfo(apiInfo())
 				.protocols(addProtocols())
-				.securitySchemes(Lists.newArrayList(new BasicAuth("basic")))
+				.securitySchemes(Lists.newArrayList(new BasicAuth("skillmen")))
 				.securityContexts(addSecurityContexts());                                           
     }
 
@@ -69,7 +69,7 @@ public class SwaggerConfig {
         return Arrays.asList(
                 SecurityReference
                         .builder()
-                        .reference("basic")
+                        .reference("skillmen")
                         .scopes(new AuthorizationScope[0])
                         .build());
     }

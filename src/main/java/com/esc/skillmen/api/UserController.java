@@ -1,8 +1,8 @@
-package com.esc.basic.api;
+package com.esc.skillmen.api;
 
-import com.esc.basic.domain.User;
-import com.esc.basic.model.UserModel;
-import com.esc.basic.service.Impl.UserService;
+import com.esc.skillmen.domain.User;
+import com.esc.skillmen.model.UserModel;
+import com.esc.skillmen.service.Impl.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.log4j.Log4j2;

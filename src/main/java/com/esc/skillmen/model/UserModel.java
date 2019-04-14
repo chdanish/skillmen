@@ -1,7 +1,7 @@
-package com.esc.basic.model;
+package com.esc.skillmen.model;
 
-import com.esc.basic.constant.Role;
-import com.esc.basic.domain.User;
+import com.esc.skillmen.constant.Role;
+import com.esc.skillmen.domain.User;
 import lombok.Data;
 import lombok.ToString;
 

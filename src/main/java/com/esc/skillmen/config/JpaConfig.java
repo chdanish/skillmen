@@ -1,4 +1,4 @@
-package com.esc.basic.config;
+package com.esc.skillmen.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

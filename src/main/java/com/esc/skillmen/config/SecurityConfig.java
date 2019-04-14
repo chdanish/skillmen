@@ -1,8 +1,8 @@
-package com.esc.basic.config;
+package com.esc.skillmen.config;
 
-import com.esc.basic.constant.Role;
-import com.esc.basic.domain.User;
-import com.esc.basic.repo.UserRepository;
+import com.esc.skillmen.constant.Role;
+import com.esc.skillmen.domain.User;
+import com.esc.skillmen.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Configuration;

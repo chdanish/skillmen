@@ -1,6 +1,6 @@
-package com.esc.basic.service.Impl;
+package com.esc.skillmen.service.Impl;
 
-import com.esc.basic.service.GenericCrudService;
+import com.esc.skillmen.service.GenericCrudService;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.ArrayList;

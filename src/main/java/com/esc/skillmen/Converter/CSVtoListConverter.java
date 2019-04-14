@@ -1,6 +1,6 @@
-package com.esc.basic.Converter;
+package com.esc.skillmen.Converter;
 
-import com.esc.basic.constant.Role;
+import com.esc.skillmen.constant.Role;
 
 import javax.persistence.AttributeConverter;
 import java.util.Arrays;

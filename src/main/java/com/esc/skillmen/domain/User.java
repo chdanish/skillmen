@@ -1,7 +1,7 @@
-package com.esc.basic.domain;
+package com.esc.skillmen.domain;
 
-import com.esc.basic.Converter.CSVtoListConverter;
-import com.esc.basic.constant.Role;
+import com.esc.skillmen.Converter.CSVtoListConverter;
+import com.esc.skillmen.constant.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

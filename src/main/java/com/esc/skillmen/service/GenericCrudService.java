@@ -1,4 +1,4 @@
-package com.esc.basic.service;
+package com.esc.skillmen.service;
 
 import org.springframework.data.repository.CrudRepository;
 
