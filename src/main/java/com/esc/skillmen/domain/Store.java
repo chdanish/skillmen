@@ -29,7 +29,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Region extends  AuditModel{
+public class Store extends  AuditModel{
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -45,9 +45,11 @@ public class Region extends  AuditModel{
     @Column(name = "id", updatable = false, nullable = false)
     private String id;
     
-    @Column(name = "country", updatable = false, nullable = false, unique = true)
-    private String country;
-    @Column(name = "city", updatable = false, nullable = false, unique = true)
-    private String city;
+    @Column(name = "name", updatable = false, nullable = false, unique = true)
+    private String name;
+    @Column(name = "address", updatable = false, nullable = false, unique = true)
+    private String address;
+    private Long lat;
+    private Long lng;
 
 }
