@@ -1,7 +1,9 @@
 package com.esc.skillmen.service.Impl;
 
+import com.esc.skillmen.domain.Role;
 import com.esc.skillmen.domain.User;
 import com.esc.skillmen.repo.UserRepository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -13,22 +15,17 @@ public class UserService extends GenericCrudServiceImpl<User,String> {
     private UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
-        super(userRepository);
+        super((CrudRepository)userRepository);
         this.userRepository = userRepository;
     }
 
 
-    public UserRepository getRepository() {
-        return this.userRepository;
-    }
+
 
     @Override
     public Optional<User> update(User user) {
-        User optionalUser = get(user.getId())
-                .orElseThrow(() -> new RuntimeException("Entity not found with ID:"+ user.getId()));
-        user.setNumber(user.getNumber());
-        user.setPassword(user.getPassword());
-        user.setRoles(user.getRoles());
+        User user1 = get(user.getId());
+        user1.setPassword(user.getPassword());
         return save(user);
     }
 

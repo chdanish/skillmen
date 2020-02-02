@@ -18,7 +18,7 @@ import java.util.*;
 @EnableSwagger2
 public class SwaggerConfig {
 	
-	/*End point for swagger UI: http://localhost:8844/documentation/swagger-ui.html#/
+	/*End point for swagger UI: http://localhost:8080/documentation/swagger-ui.html#/
 */	
     @Bean
     public Docket api() { 

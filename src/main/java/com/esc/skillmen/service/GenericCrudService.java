@@ -9,9 +9,9 @@ public interface GenericCrudService< T , I > {
 
     CrudRepository<T, I> getRepository();
 
-    Optional<T> get(I i);
+    T get(I i);
 
-    Optional<List<T>> getAll();
+    List<T> getAll();
 
     Optional<T> save(T t);
 

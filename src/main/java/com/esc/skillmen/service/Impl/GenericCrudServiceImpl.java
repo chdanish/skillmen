@@ -1,8 +1,10 @@
 package com.esc.skillmen.service.Impl;
 
+import com.esc.skillmen.Exception.RecordNotFoundException;
 import com.esc.skillmen.service.GenericCrudService;
 import org.springframework.data.repository.CrudRepository;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,15 +23,16 @@ public abstract class GenericCrudServiceImpl<T ,I> implements GenericCrudService
     }
 
     @Override
-    public Optional<T> get(I i) {
-        return this.repository.findById(i);
+    public T get(I i) {
+        return this.repository.findById(i)
+                .orElseThrow(() -> new RecordNotFoundException("No record found for entity:"+ getGenericName() + " with id: "+ i));
     }
 
     @Override
-    public Optional<List<T>> getAll() {
+    public List<T> getAll() {
         List<T> list = new ArrayList<>();
         this.repository.findAll().forEach(u -> list.add(u));
-        return list.size() > 0 ? Optional.ofNullable(list) : Optional.ofNullable(null);
+        return list;
     }
 
     @Override
@@ -53,6 +56,12 @@ public abstract class GenericCrudServiceImpl<T ,I> implements GenericCrudService
     @Override
     public void deleteAll(List<T> t) {
         this.repository.deleteAll(t);
+    }
+
+    protected String getGenericName()
+    {
+        return ((Class<T>) ((ParameterizedType) getClass()
+                .getGenericSuperclass()).getActualTypeArguments()[0]).getTypeName();
     }
 
 

@@ -29,7 +29,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class User extends  AuditModel{
+public class Region extends  AuditModel{
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -44,14 +44,10 @@ public class User extends  AuditModel{
     )
     @Column(name = "id", updatable = false, nullable = false)
     private String id;
-    @Column(name = "number", updatable = false, nullable = false, unique = true)
-    private String number;
-    @JsonIgnore
-    private String password;
-
-    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
-    @JsonIgnoreProperties({"user"})
-    private Set<UserRoles> userRoles = new HashSet<>();
-
+    
+    @Column(name = "country", updatable = false, nullable = false, unique = true)
+    private String country;
+    @Column(name = "city", updatable = false, nullable = false, unique = true)
+    private String city;
 
 }

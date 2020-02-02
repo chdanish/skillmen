@@ -1,8 +1,11 @@
 package com.esc.skillmen.api;
 
+import com.esc.skillmen.Exception.RecordNotFoundException;
+import com.esc.skillmen.domain.Role;
 import com.esc.skillmen.domain.User;
 import com.esc.skillmen.model.UserModel;
-import com.esc.skillmen.service.Impl.UserService;
+import com.esc.skillmen.repo.RoleRepository;
+import com.esc.skillmen.repo.UserRepository;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.log4j.Log4j2;
@@ -10,9 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import java.security.Principal;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Log4j2
 @RestController
@@ -20,10 +21,12 @@ import java.util.stream.Collectors;
 @Api(description = "Set of endpoints for Creating, Retrieving, Updating and Deleting of Persons.")
 public class UserController {
 
-    private UserService userService;
+    private UserRepository userRepository;
+    private RoleRepository roleRepository;
 
-    public UserController(final UserService userService) {
-        this.userService = userService;
+    public UserController(final UserRepository userRepository, final RoleRepository roleRepository) {
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
     }
 
     @GetMapping("/principal")
@@ -35,42 +38,28 @@ public class UserController {
 
     @GetMapping
     public Optional<User> getUser(@ApiIgnore Principal principal) {
-        return userService.getRepository().findByNumber(principal.getName());
+        return userRepository.findByNumber(principal.getName());
     }
 
     @GetMapping("/id")
-    public Optional<User> getUser(@ApiIgnore Principal principal, @RequestParam String id) {
-        return userService.get(id);
+    public User getUser(@ApiIgnore Principal principal, @RequestParam String id) {
+        return userRepository.findById(id).orElseThrow(() -> new RuntimeException( "Entity not found." ));
     }
 
     @GetMapping("/all")
-    public Optional<List<User>> getAllUser(@ApiIgnore Principal principal, @RequestParam String id) {
-        return userService.getAll();
+    public Iterable<User> getAllUser(@ApiIgnore Principal principal) {
+        return userRepository.findAllUsers();
     }
 
     @PostMapping
-    public Optional<User> saveUser(@ApiIgnore Principal principal, @RequestBody UserModel userModel) {
+    public User saveUser(@ApiIgnore Principal principal, @RequestBody UserModel userModel) {
         log.debug("Recieved new user save request: ",userModel);
-        return userService.save(userModel.toUser());
+        final User save = userRepository.save(userModel.toUser());
+        final Role role = roleRepository.findByName("USER")
+                .orElseThrow(() -> new RecordNotFoundException("Role not found with name 'USER'"));
+        return save;
     }
 
-    @PostMapping("/all")
-    public Optional<List<User>> saveUser(@ApiIgnore Principal principal, @RequestBody List<UserModel> userModel) {
-        log.debug("Recieved new user save request: ",userModel);
-        List<User> users = userModel.stream().filter(u -> u.getId() == null)
-                .peek(log::debug).flatMap(userModel1 -> userModel.stream())
-                .map(userModel1 -> userModel1.toUser()).collect(Collectors.toList());
-        return userService.saveAll(users);
-    }
-
-    @PutMapping("/password")
-    public Optional<User> updateUserPassword(@ApiIgnore Principal principal, @RequestBody UserModel userModel) {
-        log.debug("Recieved put request for user: ",userModel);
-        User user = userService.get(userModel.getId())
-                .orElseThrow(() -> new RuntimeException("Entity not found exception"));
-        user.setPassword(userModel.getPassword());
-        return userService.save(user);
-    }
 
 
 }

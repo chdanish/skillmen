@@ -1,7 +1,9 @@
 package com.esc.skillmen.config;
 
-import com.esc.skillmen.constant.Role;
+import com.esc.skillmen.domain.Role;
 import com.esc.skillmen.domain.User;
+import com.esc.skillmen.domain.UserRoles;
+import com.esc.skillmen.repo.RoleRepository;
 import com.esc.skillmen.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
@@ -21,6 +23,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -33,6 +36,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserRepository userRepository;
+    
+    @Autowired
+    private RolesUtil rolesUtil;
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -50,9 +56,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         String name = authentication.getName();
                         String password = authentication.getCredentials().toString();
                         Optional<User> user = userRepository.findByNumber(name);
+                        if (!user.isPresent()) return null;
+                        List<Role> roles = rolesUtil.getUserRoles(user.get());
                         return user.isPresent() && user.get().getPassword().equals(password) ? new UsernamePasswordAuthenticationToken(
                                 name, password,
-                                AuthorityUtils.commaSeparatedStringToAuthorityList(user.get().getRoles().stream().map(Role::name).collect(Collectors.joining(",")))
+                                AuthorityUtils.commaSeparatedStringToAuthorityList(roles.stream()
+                                                .map(r -> r.getName())
+                                                .collect(Collectors.joining(",")))
                         ) : null;
                     }
                 });  // option 1
